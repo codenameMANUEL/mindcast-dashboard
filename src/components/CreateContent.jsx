@@ -1,15 +1,20 @@
 import { ThreeDotsVertical, ArrowRightShort } from 'react-bootstrap-icons';
-
+import profileImageOne from "../assets/image/profileImage-one.webp"
+import facebook from "../assets/image/Logo.png"
+import medium from "../assets/image/Medium.png"
+import google from "../assets/image/Google.png"
+import youtube from "../assets/image/Youtube.png"
+import bing from "../assets/image/Bing.png"
 
 function CreateContent() {
   return (
     <>
-      <div className="w-100 container-fluid bg-light">
+      <div className="w-100 container-fluid bg-light pt-4">
         <div className="d-sm-flex justify-content-between mb-4">
-          <h1 className="h3 mb-0 text-gray-800">Dashboard</h1>
+          <h1 className="h2 mb-0 dashboard">Dashboard</h1>
           <div className="d-flex flex-column flex-sm-row">
             <div style={{ marginTop: 10 + 'px' }} className="create-content order-sm-1">
-              <button className="dropdown-item" data-toggle="modal" data-target="#logoutModal">Create Content</button>
+              <button className="dropdown-item" data-toggle="modal" data-target="#logoutModal">Create Content <span><i class="bi bi-plus"></i></span></button>
             </div>
             <div style={{ marginTop: 10 + 'px', paddingLeft: 20 + "px" }} className="broadcast-btn order-sm-2">
               <button className="dropdown-item" data-toggle="modal" data-target="#Broadcast">Broadcast Messages to All</button>
@@ -104,7 +109,7 @@ function CreateContent() {
 
               <div
                 className="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h6 className="m-0 font-weight-bold text-primary">User Overview</h6>
+                <h6 className="m-0 font-weight-bold col-black">User Overview</h6>
                 <div className="">
                   <select name="" id="" className="select">
                     <option value="">Today</option>
@@ -123,7 +128,7 @@ function CreateContent() {
             <div className="card mb-4">
               <div
                 className="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h6 className="m-0 font-weight-bold text-primary">Generate coupon</h6>
+                <h6 className="m-0 font-weight-bold col-black">Generate coupon</h6>
                 <button className="reload-btn">Reload</button>
               </div>
               <div className="card-body">
@@ -153,7 +158,7 @@ function CreateContent() {
 
                 <div className="container Profile-image d-flex justify-content-between">
                   <div className="d-flex">
-                    <img src="img/undraw_profile.svg" alt="" />
+                    <img src={profileImageOne} alt="" className='profileImage'/>
                     <div className="Profile-details">
                       <li>Laquita Elliott</li>
                       <li>141 mutual friends</li>
@@ -187,7 +192,7 @@ function CreateContent() {
                 </div>
                 <div className="container Profile-image d-flex justify-content-between">
                   <div className="d-flex">
-                    <img src="img/undraw_profile.svg" alt="" />
+                    <img src={profileImageOne} alt="" className="profileImage" />
                     <div className="Profile-details">
                       <li>Laquita Elliott</li>
                       <li>141 mutual friends</li>
@@ -221,7 +226,7 @@ function CreateContent() {
                 </div>
                 <div className="container Profile-image d-flex justify-content-between">
                   <div className="d-flex">
-                    <img src="img/undraw_profile.svg" alt="" />
+                  <img src={profileImageOne} alt="" className='profileImage'/>
                     <div className="Profile-details">
                       <li>Laquita Elliott</li>
                       <li>141 mutual friends</li>
@@ -255,7 +260,7 @@ function CreateContent() {
                 </div>
                 <div className="container Profile-image d-flex justify-content-between">
                   <div className="d-flex">
-                    <img src="img/undraw_profile.svg" alt="" />
+                  <img src={profileImageOne} alt="" className='profileImage'/>
                     <div className="Profile-details">
                       <li>Laquita Elliott</li>
                       <li>141 mutual friends</li>
@@ -289,7 +294,7 @@ function CreateContent() {
                 </div>
                 <div className="container Profile-image d-flex justify-content-between">
                   <div className="d-flex">
-                    <img src="img/undraw_profile.svg" alt="" />
+                  <img src={profileImageOne} alt="" className='profileImage'/>
                     <div className="Profile-details">
                       <li>Laquita Elliott</li>
                       <li>141 mutual friends</li>
@@ -323,7 +328,7 @@ function CreateContent() {
                 </div>
                 <div className="container Profile-image d-flex justify-content-between">
                   <div className="d-flex">
-                    <img src="img/undraw_profile.svg" alt="" />
+                  <img src={profileImageOne} alt="" className='profileImage'/>
                     <div className="Profile-details">
                       <li>Laquita Elliott</li>
                       <li>141 mutual friends</li>
@@ -357,7 +362,7 @@ function CreateContent() {
                 </div>
                 <div className="container Profile-image d-flex justify-content-between">
                   <div className="d-flex">
-                    <img src="img/undraw_profile.svg" alt="" />
+                  <img src={profileImageOne} alt="" className='profileImage'/>
                     <div className="Profile-details">
                       <li>Laquita Elliott</li>
                       <li>141 mutual friends</li>
@@ -391,7 +396,7 @@ function CreateContent() {
                 </div>
                 <div className="container Profile-image d-flex justify-content-between">
                   <div className="d-flex">
-                    <img src="img/undraw_profile.svg" alt="" />
+                  <img src={profileImageOne} alt="" className='profileImage'/>
                     <div className="Profile-details">
                       <li>Laquita Elliott</li>
                       <li>141 mutual friends</li>
@@ -425,7 +430,7 @@ function CreateContent() {
                 </div>
                 <div className="container Profile-image d-flex justify-content-between">
                   <div className="d-flex">
-                    <img src="img/undraw_profile.svg" alt="" />
+                  <img src={profileImageOne} alt="" className='profileImage'/>
                     <div className="Profile-details">
                       <li>Laquita Elliott</li>
                       <li>141 mutual friends</li>
@@ -459,7 +464,7 @@ function CreateContent() {
                 </div>
                 <div className="container Profile-image d-flex justify-content-between">
                   <div className="d-flex">
-                    <img src="img/undraw_profile.svg" alt="" />
+                  <img src={profileImageOne} alt="" className='profileImage'/>
                     <div className="Profile-details">
                       <li>Laquita Elliott</li>
                       <li>141 mutual friends</li>
@@ -493,7 +498,7 @@ function CreateContent() {
                 </div>
                 <div className="container Profile-image d-flex justify-content-between">
                   <div className="d-flex">
-                    <img src="img/undraw_profile.svg" alt="" />
+                  <img src={profileImageOne} alt="" className='profileImage'/>
                     <div className="Profile-details">
                       <li>Laquita Elliott</li>
                       <li>141 mutual friends</li>
@@ -531,12 +536,12 @@ function CreateContent() {
           <div className="col-xl-4 col-lg-5">
             <div className="card mb-4">
               <div className="card-header py-3 flex-row align-items-center">
-                <h6 className="m-0 font-weight-bold text-primary">Become a host requests</h6>
+                <h6 className="m-0 font-weight-bold text-dark">Become a host requests</h6>
               </div>
               <div className="card-body">
                 <div className="Profile-image d-flex justify-content-between border-bottom">
                   <div className="d-flex">
-                    <img src="img/undraw_profile.svg" alt="" />
+                  <img src={profileImageOne} alt="" className='profileImage'/>
                     <div className="Profile-details">
                       <li>Laquita Elliott</li>
                       <li>141 mutual friends</li>
@@ -565,7 +570,7 @@ function CreateContent() {
                 </div>
                 <div className="Profile-image d-flex justify-content-between border-bottom">
                   <div className="d-flex">
-                    <img src="img/undraw_profile.svg" alt="" />
+                  <img src={profileImageOne} alt="" className='profileImage'/>
                     <div className="Profile-details">
                       <li>Laquita Elliott</li>
                       <li>141 mutual friends</li>
@@ -594,7 +599,7 @@ function CreateContent() {
                 </div>
                 <div className="Profile-image d-flex justify-content-between border-bottom">
                   <div className="d-flex">
-                    <img src="img/undraw_profile.svg" alt="" />
+                  <img src={profileImageOne} alt="" className='profileImage'/>
                     <div className="Profile-details">
                       <li>Laquita Elliott</li>
                       <li>141 mutual friends</li>
@@ -623,7 +628,7 @@ function CreateContent() {
                 </div>
                 <div className="Profile-image d-flex justify-content-between border-bottom">
                   <div className="d-flex">
-                    <img src="img/undraw_profile.svg" alt="" />
+                  <img src={profileImageOne} alt="" className='profileImage'/>
                     <div className="Profile-details">
                       <li>Laquita Elliott</li>
                       <li>141 mutual friends</li>
@@ -652,7 +657,7 @@ function CreateContent() {
                 </div>
                 <div className="Profile-image d-flex justify-content-between border-bottom">
                   <div className="d-flex">
-                    <img src="img/undraw_profile.svg" alt="" />
+                  <img src={profileImageOne} alt="" className='profileImage'/>
                     <div className="Profile-details">
                       <li>Laquita Elliott</li>
                       <li>141 mutual friends</li>
@@ -699,54 +704,144 @@ function CreateContent() {
               </thead>
               <tbody>
                 <tr>
-                  <th scope="row">Facebook</th>
+                  <th scope="row"><span><img src={facebook} alt="" className="socialImage"/></span> Facebook</th>
                   <td>12,5564</td>
                   <td>
                     <button className="change-btn-green">+65.31%</button>
                   </td>
                   <td>00:08:10</td>
                   <td>21.32%</td>
-                  <td><ThreeDotsVertical /></td>
+                  <td>
+                    <li className="nav-item dropdown no-arrow">
+                      <a className="nav-link dropdown-toggle" href="#" id="userDropdown"
+                        role="button" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
+                        <i className="bi bi-three-dots-vertical"></i>
+                      </a>
+                      <div className="dropdown-menu dropdown-menu-left animated--grow-in"
+                        aria-labelledby="userDropdown">
+                        <a className="dropdown-item" href="#">
+                          Approve
+                        </a>
+                        <a className="dropdown-item text-danger" href="#" data-toggle="modal"
+                          data-target="">
+                          Decline
+                        </a>
+                      </div>
+                    </li> 
+                  </td> 
                 </tr>
                 <tr>
-                  <th scope="row">Medium</th>
+                  <th scope="row"><span><img src={medium} alt="" className="socialImage"/></span>Medium</th>
                   <td>9,567</td>
                   <td>
                     <button className="change-btn-green">+65.31%</button>
                   </td>
                   <td>00:08:10</td>
                   <td>21.32%</td>
-                  <td><ThreeDotsVertical /></td>
+                  <td>
+                    <li className="nav-item dropdown no-arrow">
+                      <a className="nav-link dropdown-toggle" href="#" id="userDropdown"
+                        role="button" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
+                        <i className="bi bi-three-dots-vertical"></i>
+                      </a>
+                      <div className="dropdown-menu dropdown-menu-left animated--grow-in"
+                        aria-labelledby="userDropdown">
+                        <a className="dropdown-item" href="#">
+                          Approve
+                        </a>
+                        <a className="dropdown-item text-danger" href="#" data-toggle="modal"
+                          data-target="">
+                          Decline
+                        </a>
+                      </div>
+                    </li>
+                  </td>
                 </tr>
                 <tr>
-                  <th scope="row">Google</th>
+                  <th scope="row"><span><img src={google} alt="" className="socialImage"/></span>Google</th>
                   <td>5,440</td>
                   <td>
                     <button className="change-btn-red">+65.31%</button>
                   </td>
                   <td>00:08:10</td>
                   <td>21.32%</td>
-                  <td><ThreeDotsVertical /></td>
+                  <td>
+                    <li className="nav-item dropdown no-arrow">
+                      <a className="nav-link dropdown-toggle" href="#" id="userDropdown"
+                        role="button" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
+                        <i className="bi bi-three-dots-vertical"></i>
+                      </a>
+                      <div className="dropdown-menu dropdown-menu-left animated--grow-in"
+                        aria-labelledby="userDropdown">
+                        <a className="dropdown-item" href="#">
+                          Approve
+                        </a>
+                        <a className="dropdown-item text-danger" href="#" data-toggle="modal"
+                          data-target="">
+                          Decline
+                        </a>
+                      </div>
+                    </li>
+                  </td>
                 </tr>
                 <tr>
-                  <th scope="row">Youtube</th>
+                  <th scope="row"><span><img src={youtube} alt="" className="socialImage"/></span>Youtube</th>
                   <td>2,767</td>
                   <td>
                     <button className="change-btn-green">+65.31%</button>
                   </td>
                   <td>00:08:10</td>
                   <td>21.32%</td>
-                  <td><ThreeDotsVertical /></td>
+                  <td>
+                    <li className="nav-item dropdown no-arrow">
+                      <a className="nav-link dropdown-toggle" href="#" id="userDropdown"
+                        role="button" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
+                        <i className="bi bi-three-dots-vertical"></i>
+                      </a>
+                      <div className="dropdown-menu dropdown-menu-left animated--grow-in"
+                        aria-labelledby="userDropdown">
+                        <a className="dropdown-item" href="#">
+                          Approve
+                        </a>
+                        <a className="dropdown-item text-danger" href="#" data-toggle="modal"
+                          data-target="">
+                          Decline
+                        </a>
+                      </div>
+                    </li>
+                  </td>
                 </tr>
                 <tr>
-                  <th scope="row">Bing</th>
+                  <th scope="row"><span><img src={bing} alt="" className="socialImage"/></span>Bing</th>
                   <td>1,443</td>
                   <td>
                     <button className="change-btn-red">+65.31%</button>
                   </td>
                   <td>00:08:10</td>
                   <td>21.32%</td>
-                  <td><ThreeDotsVertical /></td>
+                  <td>
+                    <li className="nav-item dropdown no-arrow">
+                      <a className="nav-link dropdown-toggle" href="#" id="userDropdown"
+                        role="button" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
+                        <i className="bi bi-three-dots-vertical"></i>
+                      </a>
+                      <div className="dropdown-menu dropdown-menu-left animated--grow-in"
+                        aria-labelledby="userDropdown">
+                        <a className="dropdown-item" href="#">
+                          Approve
+                        </a>
+                        <a className="dropdown-item text-danger" href="#" data-toggle="modal"
+                          data-target="">
+                          Decline
+                        </a>
+                      </div>
+                    </li>
+                    </td>
                 </tr>
               </tbody>
             </table>
@@ -796,7 +891,7 @@ function CreateContent() {
                       <textarea name="" id=""></textarea>
                     </div>
                   </div>
-                  <div class="pt-4">
+                  <div class="pt-4 modal-select">
                     <select name="" id="" class="select-modal">
                       <option value="">Select category</option>
                     </select>
@@ -835,12 +930,12 @@ function CreateContent() {
                 <p>All users <span class="total-users">49</span></p>
               </div>
               <div class="modal-img-row">
-                <img src="image/pexels-photo-415829.webp" alt="" />
-                <img src="image/pexels-photo-415829.webp" alt="" />
-                <img src="image/pexels-photo-415829.webp" alt="" />
-                <img src="image/pexels-photo-415829.webp" alt="" />
-                <img src="image/pexels-photo-415829.webp" alt="" />
-                <img src="image/pexels-photo-415829.webp" alt="" />
+                <img src={profileImageOne} alt="" />
+                <img src={profileImageOne} alt="" />
+                <img src={profileImageOne} alt="" />
+                <img src={profileImageOne} alt="" />
+                <img src={profileImageOne} alt="" />
+                <img src={profileImageOne} alt="" />
               </div>
               <div class="modal-broadcast">
                 <p>Send message</p>

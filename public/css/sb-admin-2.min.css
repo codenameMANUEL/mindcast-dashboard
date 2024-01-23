@@ -1782,7 +1782,7 @@ pre code {
 
 .table td,
 .table th {
-    padding: .75rem;
+    padding: .55rem;
     vertical-align: top;
     border-top: 1px solid #e3e6f0
 }
@@ -11769,10 +11769,10 @@ a:focus {
         font-family: 'Font Awesome 5 Free'
     }
 
-    .sidebar .nav-item .nav-link[data-toggle=collapse].collapsed::after {
+    /* .sidebar .nav-item .nav-link[data-toggle=collapse].collapsed::after {
         content: '\f105';
         color: black;
-    }
+    } */
 
     .sidebar .sidebar-brand .sidebar-brand-icon i {
         font-size: 2rem
@@ -12614,17 +12614,32 @@ body.sidebar-toggled footer.sticky-footer {
 
 
 
+
+li{
+    list-style: none;
+}
+.bi{
+    color: black;
+}
+.dashboard{
+    color: black;
+    font-weight: 500;
+}
+.col-black{
+    color: black;
+}
 .create-content button{
     border: 1px solid black;
     border-radius: 5px;
     color: black;
-    font-weight: bold;
+}
+.create-content button:hover{
+    background-color: transparent;
 }
 .broadcast-btn button{
     background-color: #83FD38;
     border-radius: 5px;
     color: black;
-    font-weight: bold;
 }
 .select{
     width: 110px;
@@ -12805,4 +12820,32 @@ tbody tr{
 .all-users-scroll{
     height: 400px;
     overflow-y: scroll;
+}
+.profileImage{
+    margin-top: 10px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+.socialImage{
+    width: 40px;
+    padding-right: 10px;
+}
+
+@media (max-width:575.98px) {
+    .title input{
+        width: 325px;
+    }
+    .description textarea{
+        width: 325px;
+    }
+    .modal-select select{
+        width: 325px;
+    }
+    .modal-create-content button{
+        width: 325px;
+    }
+    .modal-broadcast textarea{
+        width: 325px;
+    }
 }

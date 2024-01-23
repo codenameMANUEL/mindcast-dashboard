@@ -1,15 +1,16 @@
 
-import profileImage from "../assets/images/profileImage.webp"
+import profileImage from "../assets/image/profileImage-one.webp"
 
 function NavBar() {
     return (
         <>
             <div id="content-wrapper" className="d-flex flex-column w-100">
                 <div id="content">
-                    <nav className="navbar navbar-expand navbar-secondary bg-light topbar mb-4 static-top border-bottom">
+                    <nav className="navbar navbar-expand navbar-secondary bg-light topbar static-top border-bottom">
                         <button id="sidebarToggleTop" className="btn btn-link d-md-none rounded-circle mr-3">
                             <i className="fa fa-bars"></i>
                         </button>
+                        {/* <i class="bi bi-arrow-left-short"></i> */}
                         <form
                             className="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 ">
                             <div className="nav-input">
@@ -45,7 +46,55 @@ function NavBar() {
                             <li className="nav-item dropdown no-arrow mx-1">
                                 <a className="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i className="fas fa-bell fa-fw"></i>
+                                    <i class="bi bi-bell"></i>
+                                    <span className="badge badge-danger badge-counter">3+</span>
+                                </a>
+                                <div className="dropdown-list dropdown-menu dropdown-menu-right animated--grow-in"
+                                    aria-labelledby="alertsDropdown">
+                                    <h6 className="dropdown-header">
+                                        Alerts Center
+                                    </h6>
+                                    <a className="dropdown-item d-flex align-items-center" href="#">
+                                        <div className="mr-3">
+                                            <div className="icon-circle bg-primary">
+                                                <i className="fas fa-file-alt text-white"></i>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div className="small text-gray-500">December 12, 2019</div>
+                                            <span className="font-weight-bold">A new monthly report is ready to download!</span>
+                                        </div>
+                                    </a>
+                                    <a className="dropdown-item d-flex align-items-center" href="#">
+                                        <div className="mr-3">
+                                            <div className="icon-circle bg-success">
+                                                <i className="fas fa-donate text-white"></i>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div className="small text-gray-500">December 7, 2019</div>
+                                            $290.29 has been deposited into your account!
+                                        </div>
+                                    </a>
+                                    <a className="dropdown-item d-flex align-items-center" href="#">
+                                        <div className="mr-3">
+                                            <div className="icon-circle bg-warning">
+                                                <i className="fas fa-exclamation-triangle text-white"></i>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div className="small text-gray-500">December 2, 2019</div>
+                                            Spending Alert: We've noticed unusually high spending for your account.
+                                        </div>
+                                    </a>
+                                    <a className="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
+                                </div>
+                            </li>
+
+                            <li className="nav-item dropdown no-arrow mx-1">
+                                <a className="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="bi bi-chat-left"></i>
                                     <span className="badge badge-danger badge-counter">3+</span>
                                 </a>
                                 <div className="dropdown-list dropdown-menu dropdown-menu-right animated--grow-in"
@@ -93,7 +142,7 @@ function NavBar() {
                             <li className="nav-item dropdown no-arrow mx-1">
                                 <a className="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i className="fas fa-envelope fa-fw"></i>
+                                    <i class="bi bi-columns-gap"></i>
                                     <span className="badge badge-danger badge-counter">7</span>
                                 </a>
                                 <div className="dropdown-list dropdown-menu dropdown-menu-right animated--grow-in"
@@ -150,12 +199,12 @@ function NavBar() {
                                 </div>
                             </li>
 
-                            <div className="topbar-divider d-none d-sm-block"></div>
+                            <div className=" d-none d-sm-block"></div>
 
                             <li className="nav-item dropdown no-arrow">
                                 <a className="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <img className={profileImage} alt="" />
+                                    <img src={profileImage} alt="" className="profileImage"/>
                                 </a>
                                 <div className="dropdown-menu dropdown-menu-right  animated--grow-in"
                                     aria-labelledby="userDropdown">
