@@ -712,7 +712,7 @@ function CreateContent() {
                   <td>00:08:10</td>
                   <td>21.32%</td>
                   <td>
-                    <li className="nav-item dropdown no-arrow">
+                  <li className="nav-item dropdown no-arrow">
                       <a className="nav-link dropdown-toggle" href="#" id="userDropdown"
                         role="button" data-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="false">
@@ -722,6 +722,9 @@ function CreateContent() {
                         aria-labelledby="userDropdown">
                         <a className="dropdown-item" href="#">
                           Approve
+                        </a>
+                        <a className="dropdown-item" href="#">
+                          Send feedback
                         </a>
                         <a className="dropdown-item text-danger" href="#" data-toggle="modal"
                           data-target="">
@@ -740,7 +743,7 @@ function CreateContent() {
                   <td>00:08:10</td>
                   <td>21.32%</td>
                   <td>
-                    <li className="nav-item dropdown no-arrow">
+                  <li className="nav-item dropdown no-arrow">
                       <a className="nav-link dropdown-toggle" href="#" id="userDropdown"
                         role="button" data-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="false">
@@ -750,6 +753,9 @@ function CreateContent() {
                         aria-labelledby="userDropdown">
                         <a className="dropdown-item" href="#">
                           Approve
+                        </a>
+                        <a className="dropdown-item" href="#">
+                          Send feedback
                         </a>
                         <a className="dropdown-item text-danger" href="#" data-toggle="modal"
                           data-target="">
@@ -768,7 +774,7 @@ function CreateContent() {
                   <td>00:08:10</td>
                   <td>21.32%</td>
                   <td>
-                    <li className="nav-item dropdown no-arrow">
+                  <li className="nav-item dropdown no-arrow">
                       <a className="nav-link dropdown-toggle" href="#" id="userDropdown"
                         role="button" data-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="false">
@@ -778,6 +784,9 @@ function CreateContent() {
                         aria-labelledby="userDropdown">
                         <a className="dropdown-item" href="#">
                           Approve
+                        </a>
+                        <a className="dropdown-item" href="#">
+                          Send feedback
                         </a>
                         <a className="dropdown-item text-danger" href="#" data-toggle="modal"
                           data-target="">
@@ -807,6 +816,9 @@ function CreateContent() {
                         <a className="dropdown-item" href="#">
                           Approve
                         </a>
+                        <a className="dropdown-item" href="#">
+                          Send feedback
+                        </a>
                         <a className="dropdown-item text-danger" href="#" data-toggle="modal"
                           data-target="">
                           Decline
@@ -824,7 +836,7 @@ function CreateContent() {
                   <td>00:08:10</td>
                   <td>21.32%</td>
                   <td>
-                    <li className="nav-item dropdown no-arrow">
+                  <li className="nav-item dropdown no-arrow">
                       <a className="nav-link dropdown-toggle" href="#" id="userDropdown"
                         role="button" data-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="false">
@@ -834,6 +846,9 @@ function CreateContent() {
                         aria-labelledby="userDropdown">
                         <a className="dropdown-item" href="#">
                           Approve
+                        </a>
+                        <a className="dropdown-item" href="#">
+                          Send feedback
                         </a>
                         <a className="dropdown-item text-danger" href="#" data-toggle="modal"
                           data-target="">
