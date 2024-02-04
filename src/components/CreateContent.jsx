@@ -1,3 +1,6 @@
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+
 import { ThreeDotsVertical, ArrowRightShort } from 'react-bootstrap-icons';
 import profileImageOne from "../assets/image/profileImage-one.webp"
 import facebook from "../assets/image/Logo.png"
@@ -5,8 +8,31 @@ import medium from "../assets/image/Medium.png"
 import google from "../assets/image/Google.png"
 import youtube from "../assets/image/Youtube.png"
 import bing from "../assets/image/Bing.png"
+import { BASE_URL, USER_DOMAIN } from '../utils/config';
+
+
 
 function CreateContent() {
+
+  const [data, setData] = useState([]);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await axios.get(`${BASE_URL}${USER_DOMAIN}/users`);
+        setData(res.data.data);
+        console.log(res.data.data)
+      } catch (error) {
+        setError(error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  const sortedUsers = [...data].sort((a, b) => new Date(b.time_created) - new Date(a.time_created));
+
   return (
     <>
       <div className="w-100 container-fluid bg-light pt-4">
@@ -156,11 +182,11 @@ function CreateContent() {
                   <input type="text" placeholder="Search friends..." />
                 </div>
 
-                <div className="container Profile-image d-flex justify-content-between">
+                {/* <div className="container Profile-image d-flex justify-content-between">
                   <div className="d-flex">
                     <img src={profileImageOne} alt="" className='profileImage'/>
                     <div className="Profile-details">
-                      <li>Laquita Elliott</li>
+                      <li>{}</li>
                       <li>141 mutual friends</li>
                     </div>
                   </div>
@@ -529,8 +555,225 @@ function CreateContent() {
                       </div>
                     </li>
                   </div>
-                </div>
+                </div> */}
+
+<div className="container card pb-4">
+          <div className="table-responsive">
+            <table className="table">
+              {/* <thead>
+                <tr>
+                  <th scope="col">SOURCE</th>
+                  <th scope="col">PAGE VIEWS</th>
+                  <th scope="col">CHANGE</th>
+                  <th scope="col">DURATION</th>
+                  <th scope="col">BOUNCE</th>
+                  <th scope="col">&nbsp;</th>
+                </tr>
+              </thead> */}
+
+<tbody>
+          {sortedUsers.map(user => (
+            <tr key={user.id}>
+              <th scope="row">
+                <span><img src={user.image} alt="" className="userImage"/></span>
+                {user.firstName} <span>{user.lastName}</span>
+              </th>
+              <td>{user.phone}</td>
+              <td>
+                <button className="change-btn-green">Mood</button>
+              </td>
+              <td>{user.email}</td>
+              <td>{user.percentage}</td>
+              <td>
+                <li className="nav-item dropdown no-arrow">
+                  <a className="nav-link dropdown-toggle" href="#" id="userDropdown"
+                    role="button" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">
+                    <i className="bi bi-three-dots-vertical"></i>
+                  </a>
+                  <div className="dropdown-menu dropdown-menu-left animated--grow-in"
+                    aria-labelledby="userDropdown">
+                    <a className="dropdown-item" href="#">
+                      Approve
+                    </a>
+                    <a className="dropdown-item" href="#">
+                      Send feedback
+                    </a>
+                    <a className="dropdown-item text-danger" href="#" data-toggle="modal"
+                      data-target="">
+                      Decline
+                    </a>
+                  </div>
+                </li>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+              {/* <tbody>
+                <tr>
+                  <th scope="row"><span><img src={facebook} alt="" className="socialImage"/></span> Firstname <span>lastname</span></th>
+                  <td>phone</td>
+                  <td>
+                    <button className="change-btn-green">Mood</button>
+                  </td>
+                  <td>email_address</td>
+                  <td>21.32%</td>
+                  <td>
+                  <li className="nav-item dropdown no-arrow">
+                      <a className="nav-link dropdown-toggle" href="#" id="userDropdown"
+                        role="button" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
+                        <i className="bi bi-three-dots-vertical"></i>
+                      </a>
+                      <div className="dropdown-menu dropdown-menu-left animated--grow-in"
+                        aria-labelledby="userDropdown">
+                        <a className="dropdown-item" href="#">
+                          Approve
+                        </a>
+                        <a className="dropdown-item" href="#">
+                          Send feedback
+                        </a>
+                        <a className="dropdown-item text-danger" href="#" data-toggle="modal"
+                          data-target="">
+                          Decline
+                        </a>
+                      </div>
+                    </li> 
+                  </td> 
+                </tr>
+                <tr>
+                  <th scope="row"><span><img src={medium} alt="" className="socialImage"/></span>Medium</th>
+                  <td>9,567</td>
+                  <td>
+                    <button className="change-btn-green">+65.31%</button>
+                  </td>
+                  <td>00:08:10</td>
+                  <td>21.32%</td>
+                  <td>
+                  <li className="nav-item dropdown no-arrow">
+                      <a className="nav-link dropdown-toggle" href="#" id="userDropdown"
+                        role="button" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
+                        <i className="bi bi-three-dots-vertical"></i>
+                      </a>
+                      <div className="dropdown-menu dropdown-menu-left animated--grow-in"
+                        aria-labelledby="userDropdown">
+                        <a className="dropdown-item" href="#">
+                          Approve
+                        </a>
+                        <a className="dropdown-item" href="#">
+                          Send feedback
+                        </a>
+                        <a className="dropdown-item text-danger" href="#" data-toggle="modal"
+                          data-target="">
+                          Decline
+                        </a>
+                      </div>
+                    </li>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row"><span><img src={google} alt="" className="socialImage"/></span>Google</th>
+                  <td>5,440</td>
+                  <td>
+                    <button className="change-btn-red">+65.31%</button>
+                  </td>
+                  <td>00:08:10</td>
+                  <td>21.32%</td>
+                  <td>
+                  <li className="nav-item dropdown no-arrow">
+                      <a className="nav-link dropdown-toggle" href="#" id="userDropdown"
+                        role="button" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
+                        <i className="bi bi-three-dots-vertical"></i>
+                      </a>
+                      <div className="dropdown-menu dropdown-menu-left animated--grow-in"
+                        aria-labelledby="userDropdown">
+                        <a className="dropdown-item" href="#">
+                          Approve
+                        </a>
+                        <a className="dropdown-item" href="#">
+                          Send feedback
+                        </a>
+                        <a className="dropdown-item text-danger" href="#" data-toggle="modal"
+                          data-target="">
+                          Decline
+                        </a>
+                      </div>
+                    </li>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row"><span><img src={youtube} alt="" className="socialImage"/></span>Youtube</th>
+                  <td>2,767</td>
+                  <td>
+                    <button className="change-btn-green">+65.31%</button>
+                  </td>
+                  <td>00:08:10</td>
+                  <td>21.32%</td>
+                  <td>
+                    <li className="nav-item dropdown no-arrow">
+                      <a className="nav-link dropdown-toggle" href="#" id="userDropdown"
+                        role="button" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
+                        <i className="bi bi-three-dots-vertical"></i>
+                      </a>
+                      <div className="dropdown-menu dropdown-menu-left animated--grow-in"
+                        aria-labelledby="userDropdown">
+                        <a className="dropdown-item" href="#">
+                          Approve
+                        </a>
+                        <a className="dropdown-item" href="#">
+                          Send feedback
+                        </a>
+                        <a className="dropdown-item text-danger" href="#" data-toggle="modal"
+                          data-target="">
+                          Decline
+                        </a>
+                      </div>
+                    </li>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row"><span><img src={bing} alt="" className="socialImage"/></span>Bing</th>
+                  <td>1,443</td>
+                  <td>
+                    <button className="change-btn-red">+65.31%</button>
+                  </td>
+                  <td>00:08:10</td>
+                  <td>21.32%</td>
+                  <td>
+                  <li className="nav-item dropdown no-arrow">
+                      <a className="nav-link dropdown-toggle" href="#" id="userDropdown"
+                        role="button" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
+                        <i className="bi bi-three-dots-vertical"></i>
+                      </a>
+                      <div className="dropdown-menu dropdown-menu-left animated--grow-in"
+                        aria-labelledby="userDropdown">
+                        <a className="dropdown-item" href="#">
+                          Approve
+                        </a>
+                        <a className="dropdown-item" href="#">
+                          Send feedback
+                        </a>
+                        <a className="dropdown-item text-danger" href="#" data-toggle="modal"
+                          data-target="">
+                          Decline
+                        </a>
+                      </div>
+                    </li>
+                    </td>
+                </tr>
+              </tbody> */}
+            </table>
+          </div>
+          <div>
+            <p className="text-center view-more-social-track text-primary">See all data <ArrowRightShort /></p>
+          </div>
+        </div>
               </div>
+
             </div>
           </div>
           <div className="col-xl-4 col-lg-5">

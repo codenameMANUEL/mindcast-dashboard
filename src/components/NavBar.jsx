@@ -204,7 +204,7 @@ function NavBar() {
                             <li className="nav-item dropdown no-arrow">
                                 <a className="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <img src={profileImage} alt="" className="profileImage"/>
+                                    <img src={profileImage} alt="" className="profileImage" />
                                 </a>
                                 <div className="dropdown-menu dropdown-menu-right  animated--grow-in"
                                     aria-labelledby="userDropdown">

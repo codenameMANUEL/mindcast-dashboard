@@ -12827,6 +12827,14 @@ tbody tr{
     height: 40px;
     border-radius: 50%;
 }
+.userImage{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid transparent;
+    object-fit: cover;
+    margin-right: 20px;
+}
 .socialImage{
     width: 40px;
     padding-right: 10px;
