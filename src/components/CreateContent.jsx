@@ -32,6 +32,7 @@ function CreateContent({ itemId }) {
   const handleDelete = async (me) => {
     try {
       let auser = { "id": me }
+      console.log(auser);
       const response = await axios.post(`${BASE_URL}${USER_DOMAIN}/delete`, auser);
       if (response.status === 200) {
         console.log('Data deleted successfully');
