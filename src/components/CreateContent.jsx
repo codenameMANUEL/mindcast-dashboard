@@ -12,7 +12,7 @@ import { BASE_URL, USER_DOMAIN } from '../utils/config';
 
 
 
-function CreateContent() {
+function CreateContent({ itemId }) {
 
   const [data, setData] = useState([]);
   const [error, setError] = useState(null);
@@ -22,7 +22,7 @@ function CreateContent() {
       try {
         const res = await axios.get(`${BASE_URL}${USER_DOMAIN}/users`);
         setData(res.data.data);
-        console.log(res.data.data)
+        //console.log(res.data.data)
       } catch (error) {
         setError(error);
       }
@@ -30,6 +30,18 @@ function CreateContent() {
 
     fetchData();
   }, []);
+
+  const handleDelete = async (me) => {
+    try {
+      let auser = { "id": me }
+      const response = await axios.post(`${BASE_URL}${USER_DOMAIN}/delete`, auser);
+      if (response.status === 200) {
+        console.log('Data deleted successfully');
+      }
+    } catch (error) {
+      console.error('Error deleting data:', error.message);
+    }
+  };
 
   const sortedUsers = [...data].sort((a, b) => new Date(b.time_created) - new Date(a.time_created));
 
@@ -181,64 +193,58 @@ function CreateContent() {
                 <div className="p-4 search-users">
                   <input type="text" placeholder="Search friends..." />
                 </div>
-<div className="container card pb-4">
-          <div className="table-responsive">
-            <table className="table">
-              {/* <thead>
-                <tr>
-                  <th scope="col">SOURCE</th>
-                  <th scope="col">PAGE VIEWS</th>
-                  <th scope="col">CHANGE</th>
-                  <th scope="col">DURATION</th>
-                  <th scope="col">BOUNCE</th>
-                  <th scope="col">&nbsp;</th>
-                </tr>
-              </thead> */}
-
-<tbody>
-          {sortedUsers.map(user => (
-            <tr key={user.id}>
-              <th scope="row">
-                <span><img src={user.image} alt="" className="userImage"/></span>
-                {user.firstName} <span>{user.lastName}</span>
-              </th>
-              <td>{user.phone}</td>
-              <td>
-                <button className="change-btn-green">Mood</button>
-              </td>
-              <td>{user.email}</td>
-              <td>{user.percentage}</td>
-              <td>
-                <li className="nav-item dropdown no-arrow">
-                  <a className="nav-link dropdown-toggle" href="#" id="userDropdown"
-                    role="button" data-toggle="dropdown" aria-haspopup="true"
-                    aria-expanded="false">
-                    <i className="bi bi-three-dots-vertical"></i>
-                  </a>
-                  <div className="dropdown-menu dropdown-menu-left animated--grow-in"
-                    aria-labelledby="userDropdown">
-                    <a className="dropdown-item" href="#">
-                      Approve
-                    </a>
-                    <a className="dropdown-item" href="#">
-                      Send feedback
-                    </a>
-                    <a className="dropdown-item text-danger" href="#" data-toggle="modal"
-                      data-target="">
-                      Decline
-                    </a>
+                <div className="container card pb-4">
+                  <div className="table-responsive">
+                    <table className="table">
+                      <tbody>
+                        {sortedUsers.map(user => (
+                          <tr key={user.id}>
+                            <th scope="row">
+                              <span><img src={user.image} alt="" className="userImage" /></span>
+                              {user.firstName} <span>{user.lastName}</span>
+                            </th>
+                            <td className='pt-4'>{user.email}</td>
+                            <td>
+                              <button className="change-btn-green mt-3">Mood</button>
+                            </td>
+                            <td>{ }</td>
+                            <td>{user.percentage}</td>
+                            <td>
+                              <li className="nav-item dropdown no-arrow">
+                                <a className="nav-link dropdown-toggle" href="#" id="userDropdown"
+                                  role="button" data-toggle="dropdown" aria-haspopup="true"
+                                  aria-expanded="false">
+                                  <i className="bi bi-three-dots-vertical"></i>
+                                </a>
+                                <div className="dropdown-menu dropdown-menu-left animated--grow-in"
+                                  aria-labelledby="userDropdown">
+                                  <a className="dropdown-item" href="#">
+                                    Make a host
+                                  </a>
+                                  <a className="dropdown-item" href="#">
+                                    Edit Profile
+                                  </a>
+                                  <a className="dropdown-item" href="#">
+                                    Send Message
+                                  </a>
+                                  <a className="dropdown-item text-danger" href="#" data-toggle="modal"
+                                    data-target=""
+                                    onClick={() => handleDelete(user._id)}
+                                  >
+                                    Delete Profile
+                                  </a>
+                                </div>
+                              </li>
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
                   </div>
-                </li>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-            </table>
-          </div>
-          <div>
-            <p className="text-center view-more-social-track text-primary">See all data <ArrowRightShort /></p>
-          </div>
-        </div>
+                  <div>
+                    <p className="text-center view-more-social-track text-primary">See all data <ArrowRightShort /></p>
+                  </div>
+                </div>
               </div>
 
             </div>
@@ -251,7 +257,7 @@ function CreateContent() {
               <div className="card-body">
                 <div className="Profile-image d-flex justify-content-between border-bottom">
                   <div className="d-flex">
-                  <img src={profileImageOne} alt="" className='profileImage'/>
+                    <img src={profileImageOne} alt="" className='profileImage' />
                     <div className="Profile-details">
                       <li>Laquita Elliott</li>
                       <li>141 mutual friends</li>
@@ -280,7 +286,7 @@ function CreateContent() {
                 </div>
                 <div className="Profile-image d-flex justify-content-between border-bottom">
                   <div className="d-flex">
-                  <img src={profileImageOne} alt="" className='profileImage'/>
+                    <img src={profileImageOne} alt="" className='profileImage' />
                     <div className="Profile-details">
                       <li>Laquita Elliott</li>
                       <li>141 mutual friends</li>
@@ -309,7 +315,7 @@ function CreateContent() {
                 </div>
                 <div className="Profile-image d-flex justify-content-between border-bottom">
                   <div className="d-flex">
-                  <img src={profileImageOne} alt="" className='profileImage'/>
+                    <img src={profileImageOne} alt="" className='profileImage' />
                     <div className="Profile-details">
                       <li>Laquita Elliott</li>
                       <li>141 mutual friends</li>
@@ -338,7 +344,7 @@ function CreateContent() {
                 </div>
                 <div className="Profile-image d-flex justify-content-between border-bottom">
                   <div className="d-flex">
-                  <img src={profileImageOne} alt="" className='profileImage'/>
+                    <img src={profileImageOne} alt="" className='profileImage' />
                     <div className="Profile-details">
                       <li>Laquita Elliott</li>
                       <li>141 mutual friends</li>
@@ -367,7 +373,7 @@ function CreateContent() {
                 </div>
                 <div className="Profile-image d-flex justify-content-between border-bottom">
                   <div className="d-flex">
-                  <img src={profileImageOne} alt="" className='profileImage'/>
+                    <img src={profileImageOne} alt="" className='profileImage' />
                     <div className="Profile-details">
                       <li>Laquita Elliott</li>
                       <li>141 mutual friends</li>
@@ -414,7 +420,7 @@ function CreateContent() {
               </thead>
               <tbody>
                 <tr>
-                  <th scope="row"><span><img src={facebook} alt="" className="socialImage"/></span> Facebook</th>
+                  <th scope="row"><span><img src={facebook} alt="" className="socialImage" /></span> Facebook</th>
                   <td>12,5564</td>
                   <td>
                     <button className="change-btn-green">+65.31%</button>
@@ -422,7 +428,7 @@ function CreateContent() {
                   <td>00:08:10</td>
                   <td>21.32%</td>
                   <td>
-                  <li className="nav-item dropdown no-arrow">
+                    <li className="nav-item dropdown no-arrow">
                       <a className="nav-link dropdown-toggle" href="#" id="userDropdown"
                         role="button" data-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="false">
@@ -441,11 +447,11 @@ function CreateContent() {
                           Decline
                         </a>
                       </div>
-                    </li> 
-                  </td> 
+                    </li>
+                  </td>
                 </tr>
                 <tr>
-                  <th scope="row"><span><img src={medium} alt="" className="socialImage"/></span>Medium</th>
+                  <th scope="row"><span><img src={medium} alt="" className="socialImage" /></span>Medium</th>
                   <td>9,567</td>
                   <td>
                     <button className="change-btn-green">+65.31%</button>
@@ -453,7 +459,7 @@ function CreateContent() {
                   <td>00:08:10</td>
                   <td>21.32%</td>
                   <td>
-                  <li className="nav-item dropdown no-arrow">
+                    <li className="nav-item dropdown no-arrow">
                       <a className="nav-link dropdown-toggle" href="#" id="userDropdown"
                         role="button" data-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="false">
@@ -476,7 +482,7 @@ function CreateContent() {
                   </td>
                 </tr>
                 <tr>
-                  <th scope="row"><span><img src={google} alt="" className="socialImage"/></span>Google</th>
+                  <th scope="row"><span><img src={google} alt="" className="socialImage" /></span>Google</th>
                   <td>5,440</td>
                   <td>
                     <button className="change-btn-red">+65.31%</button>
@@ -484,7 +490,7 @@ function CreateContent() {
                   <td>00:08:10</td>
                   <td>21.32%</td>
                   <td>
-                  <li className="nav-item dropdown no-arrow">
+                    <li className="nav-item dropdown no-arrow">
                       <a className="nav-link dropdown-toggle" href="#" id="userDropdown"
                         role="button" data-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="false">
@@ -507,7 +513,7 @@ function CreateContent() {
                   </td>
                 </tr>
                 <tr>
-                  <th scope="row"><span><img src={youtube} alt="" className="socialImage"/></span>Youtube</th>
+                  <th scope="row"><span><img src={youtube} alt="" className="socialImage" /></span>Youtube</th>
                   <td>2,767</td>
                   <td>
                     <button className="change-btn-green">+65.31%</button>
@@ -538,7 +544,7 @@ function CreateContent() {
                   </td>
                 </tr>
                 <tr>
-                  <th scope="row"><span><img src={bing} alt="" className="socialImage"/></span>Bing</th>
+                  <th scope="row"><span><img src={bing} alt="" className="socialImage" /></span>Bing</th>
                   <td>1,443</td>
                   <td>
                     <button className="change-btn-red">+65.31%</button>
@@ -546,7 +552,7 @@ function CreateContent() {
                   <td>00:08:10</td>
                   <td>21.32%</td>
                   <td>
-                  <li className="nav-item dropdown no-arrow">
+                    <li className="nav-item dropdown no-arrow">
                       <a className="nav-link dropdown-toggle" href="#" id="userDropdown"
                         role="button" data-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="false">
@@ -566,7 +572,7 @@ function CreateContent() {
                         </a>
                       </div>
                     </li>
-                    </td>
+                  </td>
                 </tr>
               </tbody>
             </table>
