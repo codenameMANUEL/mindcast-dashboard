@@ -12835,8 +12835,11 @@ tbody tr{
     margin-right: 20px;
 }
 .socialImage{
-    width: 40px;
-    padding-right: 10px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: red;
+    object-fit: contain;
 }
 
 @media (max-width:575.98px) {
