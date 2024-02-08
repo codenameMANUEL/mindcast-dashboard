@@ -3,12 +3,10 @@ import React, { useEffect, useState } from 'react';
 
 import { ThreeDotsVertical, ArrowRightShort } from 'react-bootstrap-icons';
 import profileImageOne from "../assets/image/profileImage-one.webp"
-import facebook from "../assets/image/Logo.png"
-import medium from "../assets/image/Medium.png"
-import google from "../assets/image/Google.png"
-import youtube from "../assets/image/Youtube.png"
-import bing from "../assets/image/Bing.png"
+
 import { BASE_URL, USER_DOMAIN } from '../utils/config';
+
+import Resource from './Resource';
 
 
 
@@ -405,7 +403,7 @@ function CreateContent({ itemId }) {
           </div>
         </div>
 
-        <div className="container card pb-4">
+        {/* <div className="container card pb-4">
           <div className="table-responsive">
             <table className="table">
               <thead>
@@ -580,7 +578,9 @@ function CreateContent({ itemId }) {
           <div>
             <p className="text-center view-more-social-track text-primary">See all data <ArrowRightShort /></p>
           </div>
-        </div>
+        </div> */}
+
+        <Resource/>
 
 
       </div>
