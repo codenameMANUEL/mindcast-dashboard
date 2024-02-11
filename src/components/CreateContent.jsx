@@ -17,7 +17,9 @@ function CreateContent({ itemId }) {
 
 
   const [data, setData] = useState([]);
+  const [resources, setResources] = useState([])
   const [interests, setInterests] = useState([]);
+  const [hostRequests, setHostRequests] = useState([]);
   const [error, setError] = useState(null);
   const [image, setImage]=useState(null)
   const [imageFile, setImageFile]=useState(null)
@@ -69,6 +71,12 @@ function CreateContent({ itemId }) {
 
         const interestsRes = await axios.get(`${BASE_URL}${USER_DOMAIN}/interests`);
         setInterests(interestsRes.data.data);
+
+        const resData = await axios.get(`${BASE_URL}${USER_DOMAIN}/resources`);
+        setResources(resData.data.data)
+
+        const hostData = await axios.get(`${BASE_URL}${USER_DOMAIN}/hosts`);
+        setHostRequests(hostData.data.data)
         //console.log(res.data.data)
       } catch (error) {
         setError(error);
@@ -102,6 +110,19 @@ function CreateContent({ itemId }) {
     
     console.log(event.target.files[0]);
     setAudioFile(event.target.files[0])
+
+    let file=URL.createObjectURL(event.target.files[0]);
+    console.log(file);
+
+    
+    //var duration = moment.duration(seconds, "seconds");
+    
+    // var time = "";
+    // var hours = duration.hours();
+    // if (hours > 0) { time = hours + ":" ; }
+    
+    // time = time + duration.minutes() + ":" + duration.seconds();
+    
     
   }
 
@@ -127,7 +148,7 @@ function CreateContent({ itemId }) {
    }
    console.log(resourceData);
    await axios.post(`${BASE_URL}${USER_DOMAIN}/resources`, resourceData);
-   
+
    setLoadingCreation(false)
     }
   
@@ -186,10 +207,9 @@ function CreateContent({ itemId }) {
                 <div className="row no-gutters align-items-center">
                   <div className="col mr-1">
                     <div className="text-xs text-secondary mb-1">
-                      Played audio files</div>
-                    <div className="h5 mb-0 font-weight-bold text-dark">37,543</div>
-                    <div className="text-xs">12.54</div>
-                  </div>
+                       Audio files</div>
+                    <div className="h5 mb-0 font-weight-bold text-dark">{resources.length}</div>
+                   </div>
                   <div className="col-auto">
                     <i className="fas fa-calendar fa-2x text-gray-300"></i>
                   </div>
@@ -206,9 +226,8 @@ function CreateContent({ itemId }) {
                   <div className="col mr-1">
                     <div className="text-xs text-secondary mb-1">
                       Users</div>
-                    <div className="h5 mb-0 font-weight-bold text-dark">6,443</div>
-                    <div className="text-xs">-10.45</div>
-                  </div>
+                    <div className="h5 mb-0 font-weight-bold text-dark">{sortedUsers.length}</div>
+                   </div>
                   <div className="col-auto">
                     <i className="fas fa-calendar fa-2x text-gray-300"></i>
                   </div>
@@ -225,9 +244,8 @@ function CreateContent({ itemId }) {
                   <div className="col mr-1">
                     <div className="text-xs text-secondary mb-1">
                       Host request</div>
-                    <div className="h5 mb-0 font-weight-bold text-dark">5</div>
-                    <div className="text-xs">2.7%</div>
-                  </div>
+                    <div className="h5 mb-0 font-weight-bold text-dark">{hostRequests.length}</div>
+                   </div>
                   <div className="col-auto">
                     <i className="fas fa-calendar fa-2x text-gray-300"></i>
                   </div>
@@ -244,9 +262,8 @@ function CreateContent({ itemId }) {
                   <div className="col mr-1">
                     <div className="text-xs text-secondary mb-1">
                       Avg. time on app</div>
-                    <div className="h5 mb-0 font-weight-bold text-dark">04:20</div>
-                    <div className="text-xs">-0.04%</div>
-                  </div>
+                    <div className="h5 mb-0 font-weight-bold text-dark">00:00</div>
+                   </div>
                   <div className="col-auto">
                     <i className="fas fa-calendar fa-2x text-gray-300"></i>
                   </div>
@@ -258,7 +275,7 @@ function CreateContent({ itemId }) {
 
 
 
-        <div className="row">
+        {/* <div className="row">
 
 
           <div className="col-xl-8 col-lg-7">
@@ -300,7 +317,7 @@ function CreateContent({ itemId }) {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
 
         <div className="row">
           <div className="col-xl-8 col-lg-7">
@@ -310,11 +327,19 @@ function CreateContent({ itemId }) {
               </div>
               <div className="all-users-scroll">
                 <div className="p-4 search-users">
-                  <input type="text" placeholder="Search friends..." />
+                  <input type="text" placeholder="Search Users..." />
                 </div>
-                <div className="container card pb-4">
+                <div className="container  pb-4">
                   <div className="table-responsive">
                     <table className="table">
+                      <thead>
+                        <tr>
+                          <th>USER</th>
+                          <th>EMAIL</th>
+                          <th>MOOD</th>
+                          <th>ACTION</th>
+                        </tr>
+                      </thead>
                       <tbody>
                         {sortedUsers.map(user => (
                           <tr key={user.id}>
@@ -324,10 +349,12 @@ function CreateContent({ itemId }) {
                             </th>
                             <td className='pt-4'>{user.email}</td>
                             <td>
-                              <button className="change-btn-green mt-3">Mood</button>
+                              
+                              {user.mood==="Happy"?<label className="badge-pill badge-success mt-3">HAPPY</label>:<></>}
+                              {user.mood==="Sad"?<label className="badge-pill badge-dark mt-3">SAD</label>:<></>}
+                              {user.mood==="Angry"?<label className="badge-pill badge-danger mt-3">ANGRY</label>:<></>}
                             </td>
-                            <td>{ }</td>
-                            <td>{user.percentage}</td>
+                             <td>{user.percentage}</td>
                             <td>
                               <li className="nav-item dropdown no-arrow">
                                 <a className="nav-link dropdown-toggle" href="#" id="userDropdown"

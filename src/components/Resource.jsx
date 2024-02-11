@@ -55,7 +55,9 @@ function Resource() {
                     <th scope="row"><span><img src={resource.image} alt="" className="socialImage" /></span> </th>
                     <td>{resource.title}</td>
                     <td>
-                      <button className="change-btn-green">{resource.moodType}</button>
+                      {resource.moodType==="happy"?<label className="badge-pill badge-success mt-3">HAPPY</label>:<></>}
+                      {resource.moodType==="sad"?<label className="badge-pill badge-dark mt-3">SAD</label>:<></>}
+                      {resource.moodType==="angry"?<label className="badge-pill badge-danger mt-3">ANGRY</label>:<></>}
                     </td>
                     <td>{resource.duration}</td>
                     <td>{formatTimestampToDate(resource.time_created)}</td>
