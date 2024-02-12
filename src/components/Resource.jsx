@@ -15,18 +15,35 @@ function Resource() {
     const [error, setError] = useState(null)
 
     useEffect(()=>{
-        const fetchResources = async () =>{
-            try {
-                const res = await axios.get(`${BASE_URL}${USER_DOMAIN}/resources`);
-                console.log( 'entered:',res.data.data)
-                setResources(res.data.data)
-                // console.log("hey")
-            } catch (error){
-                setError(error);
-            }
-        };
+       
         fetchResources();
     }, []);
+
+    const fetchResources = async () =>{
+      try {
+          const res = await axios.get(`${BASE_URL}${USER_DOMAIN}/resources`);
+          console.log( 'entered:',res.data.data)
+          setResources(res.data.data)
+          // console.log("hey")
+      } catch (error){
+          setError(error);
+      }
+  };
+
+    const handleDeleteResource = async (me) => {
+      try {
+        let auser = { "id": me }
+        console.log(auser);
+        const response = await axios.post(`${BASE_URL}${USER_DOMAIN}/resources/delete`, auser);
+        if (response.status === 200) {
+          fetchResources();
+          alert("Content Deleted")
+          console.log('Data deleted successfully');
+        }
+      } catch (error) {
+        console.error('Error deleting data:', error.message);
+      }
+    };
 
     
     const formatTimestampToDate = (timestamp) => {
@@ -77,8 +94,8 @@ function Resource() {
                             Send feedback
                           </a>
                           <a className="dropdown-item text-danger" href="#" data-toggle="modal"
-                            data-target="">
-                            Decline
+                            data-target="" onClick={()=>handleDeleteResource(resource._id)}>
+                            Delete
                           </a>
                         </div>
                       </li>

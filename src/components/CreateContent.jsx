@@ -64,27 +64,29 @@ function CreateContent({ itemId }) {
   };
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await axios.get(`${BASE_URL}${USER_DOMAIN}/users`);
-        setData(res.data.data);
-
-        const interestsRes = await axios.get(`${BASE_URL}${USER_DOMAIN}/interests`);
-        setInterests(interestsRes.data.data);
-
-        const resData = await axios.get(`${BASE_URL}${USER_DOMAIN}/resources`);
-        setResources(resData.data.data)
-
-        const hostData = await axios.get(`${BASE_URL}${USER_DOMAIN}/hosts`);
-        setHostRequests(hostData.data.data)
-        //console.log(res.data.data)
-      } catch (error) {
-        setError(error);
-      }
-    };
+    
 
     fetchData();
   }, []);
+
+  const fetchData = async () => {
+    try {
+      const res = await axios.get(`${BASE_URL}${USER_DOMAIN}/users`);
+      setData(res.data.data);
+
+      const interestsRes = await axios.get(`${BASE_URL}${USER_DOMAIN}/interests`);
+      setInterests(interestsRes.data.data);
+
+      const resData = await axios.get(`${BASE_URL}${USER_DOMAIN}/resources`);
+      setResources(resData.data.data)
+
+      const hostData = await axios.get(`${BASE_URL}${USER_DOMAIN}/hosts`);
+      setHostRequests(hostData.data.data)
+      //console.log(res.data.data)
+    } catch (error) {
+      setError(error);
+    }
+  };
 
   const handleDelete = async (me) => {
     try {
@@ -92,12 +94,16 @@ function CreateContent({ itemId }) {
       console.log(auser);
       const response = await axios.post(`${BASE_URL}${USER_DOMAIN}/delete`, auser);
       if (response.status === 200) {
+        fetchData();
+        alert("User Deleted")
         console.log('Data deleted successfully');
       }
     } catch (error) {
       console.error('Error deleting data:', error.message);
     }
   };
+
+
 
   const sortedUsers = [...data].sort((a, b) => new Date(b.time_created) - new Date(a.time_created));
 
@@ -115,13 +121,7 @@ function CreateContent({ itemId }) {
     console.log(file);
 
     
-    //var duration = moment.duration(seconds, "seconds");
-    
-    // var time = "";
-    // var hours = duration.hours();
-    // if (hours > 0) { time = hours + ":" ; }
-    
-    // time = time + duration.minutes() + ":" + duration.seconds();
+     
     
     
   }
@@ -135,21 +135,26 @@ function CreateContent({ itemId }) {
       let imageURL= await uploadImage(imageFile)
       let audioURL= await uploadImage(audioFile)
       
-      let resourceData={
+      if(imageURL!=null && audioURL!=null){
+        let resourceData={
    
-       "title": title,
-       "description": descp,
-       "image": imageURL,
-       "userID": userID,
-       "duration": duration,
-       "mood": mood,
-       "interestID":interestID,
-       "resourceUrl": audioURL
-   }
-   console.log(resourceData);
-   await axios.post(`${BASE_URL}${USER_DOMAIN}/resources`, resourceData);
-
-   setLoadingCreation(false)
+          "title": title,
+          "description": descp,
+          "image": imageURL,
+          "userID": userID,
+          "duration": duration,
+          "moodType": mood,
+          "interestID":interestID,
+          "resourceUrl": audioURL
+      }
+      console.log(resourceData);
+      await axios.post(`${BASE_URL}${USER_DOMAIN}/resources`, resourceData);
+      fetchData();
+      setLoadingCreation(false)
+      alert("Content Uploaded Successfully")
+      }else{
+        alert("Image or Audio encountered error during upload")
+      }
     }
   
 
