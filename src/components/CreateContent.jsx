@@ -46,16 +46,16 @@ function CreateContent({ itemId }) {
 
     try {
       const response = await fetch(
-        `https://api.cloudinary.com/v1_1/${process.env.REACT_APP_CLOUDINARY_CLOUD_NAME}/upload`,
+        `https://api.cloudinary.com/v1_1/${process.env.REACT_APP_CLOUDINARY_CLOUD_NAME}/auto/upload`,
         {
           method: "POST",
           body: data,
         }
       );
       const res = await response.json();
-      // console.log(res.url);
+      //  console.log(res);
     
-      return res.url
+      return res.secure_url
       
     } catch (error) {
  
